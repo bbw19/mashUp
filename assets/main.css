@@ -1,0 +1,129 @@
+@font-face {
+    font-family: flora;
+    src: url(flor-font/FlorPersonalUseRegular-rgpoy.ttf);
+}
+
+.main {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    background-color: papayawhip;
+}
+
+.header {
+    height: 150px;
+    width: 100vw;
+    flex-basis: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0,255,255);
+    background: radial-gradient(circle, rgba(0,255,255,1) 0%, rgba(255,239,213,1) 100%);
+}
+
+.logo-title {
+    font-family: flora;
+
+}
+
+.logo-title,h1 {
+    font-size: 150px;
+    color: #ffefd5;
+}
+
+.aside {
+    width: 10vw;
+    min-height: 100vh;
+}
+
+@keyframes animateBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+/* .left {
+    background-color: aqua;
+    background-image: url('./tropical-pattern.jpg');
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animateBackground 40s linear infinite;
+}
+
+.right {
+    background-color: aqua;
+} */
+
+.content {
+    width: 80vh;
+    height: 100%;
+    flex-grow: 1;
+    background-color: papayawhip;
+}
+
+section {
+    max-height: 100%;
+}
+
+.loading-block {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cocktail-block {
+    flex-grow: 1;
+    flex-basis: 45%;
+}
+
+.cocktail-image {
+    margin-bottom: 20px;
+}
+
+.cocktail-image img {
+    border-radius: 20px;
+    filter: drop-shadow(0 0 0.75rem aqua);
+}
+
+.movie-block {
+    flex-grow: 1;
+    flex-basis: 45%;
+    margin-left: 10%;
+}
+
+.movie-card {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.movie-image {
+    width: 20%;
+}
+
+.movie-image img {
+    object-fit: cover;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 0.75rem aqua);
+}
+
+.movie-content {
+    width: 80%;
+    margin-left: 20px;
+}
+
