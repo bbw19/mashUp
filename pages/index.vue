@@ -1,52 +1,67 @@
 <template>
   <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
 
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
+      <b-field label="Find a cocktail">
+          <b-autocomplete
+              v-model="cocktail_selected"
+              placeholder="Type in the name of a cocktail you like"
+              :data="cocktails_autocomplete_data.drinks"
+              field="strDrink"
+              max-height="500px"
+              @select="option => update_option(option)"
+              @typing="update_cocktails"
+          >
 
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
+          <template slot-scope="props">
+                    <div class="media">
+                        <div class="media-left">
+                            <img width="200" :src="`${props.option.strDrinkThumb}`">
+                        </div>
+                        <div class="media-content">
+                            {{ props.option.strDrink }}
+                            <br>
+                            <small>
+                                {{ props.option.strCategory }},
+                                <b>{{ props.option.strAlcoholic }}</b>
+                            </small>
+                        </div>
+                    </div>
+                </template>
 
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-    </div>
+          </b-autocomplete>
+      </b-field> 
+         
   </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
-
 export default {
-  name: 'IndexPage',
-  components: {
-    Card
+  name: 'Search',
+  layout: 'basic',
+  data () {
+      return {
+        selected: null,
+        cocktail_selected: '',
+        cocktails_autocomplete_data: [],
+
+      }
+  },
+  methods: {
+    async update_cocktails (name) {
+      this.cocktails_autocomplete_data = await this.$http.$get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
+      // console.log(this.cocktails_autocomplete_data)
+    },
+    update_option (option) {
+        this.$store.commit('select_cocktail', option)
+        this.$router.push('/result')
+        this.selected = option
+    }
+  },
+  mounted () {
+  },
+  async fetch() {
+  },
+  computed: {
   }
 }
 </script>

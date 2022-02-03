@@ -81,7 +81,7 @@ export default {
   },
   async fetch() {
       this.loading = true
-      console.log(this.cocktail.strInstructions)
+      // console.log(this.cocktail.strInstructions)
       if (this.cocktail != null) {
           const name = this.cocktail.strDrink.split(' ')
         const arar = []
@@ -98,7 +98,7 @@ export default {
     getIngredients () {
       let ing = [];
       for (let i = 1; i < 15; i++) {
-        console.log(this.cocktail[`strIngredient${i}`])
+        // console.log(this.cocktail[`strIngredient${i}`])
         if (this.cocktail[`strIngredient${i}`] != null) {
           ing.push(this.cocktail[`strIngredient${i}`])
         }
